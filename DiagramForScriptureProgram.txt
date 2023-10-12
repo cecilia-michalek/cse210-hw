@@ -1,0 +1,41 @@
+Class Scripture
+
+Refrence: string
+Text: string
+
+HideText(): string
+DisplayText(): string
+
+
+
+Class Reference
+
+Book: string
+Chapter: int
+startVerse: int
+endVerse: int
+
+Reference()
+Refernce(book: string, chapter: int, startVerse: int)
+Reference(book: string, chapter: int, startVerse: nt:, endVerse: int)
+
+GetSingleVerse(): string
+GetMultiVerse(): String
+
+
+
+Class Word
+
+Word: string
+
+List<string>  _word = new List<string>(): string
+randomWord(): string
+
+Show(): string
+Hidden(): string
+
+GetIsHidden(): string
+GetRandomWord(): string
+
+
+
