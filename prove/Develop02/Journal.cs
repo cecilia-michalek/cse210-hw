@@ -2,30 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-public class Journal {
-    public List<Entry> entries = new List<Entry>(); 
 
-    public class Entry
+public class Journal
 {
-    public string Prompt { get; }
-    public string Response { get; }
-    public DateTime Date { get; }
-
-    public Entry(string prompt, string response, DateTime date)
-    {
-        Prompt = prompt;
-        Response = response;
-        Date = date;
-    }
-}
-    
-    public void AddEntry(string prompt, string response)
-{
-    DateTime currentDate = DateTime.Now; // Get current date and time
-    Entry entry = new Entry(prompt, response, currentDate);
-    entries.Add(entry);
-    Console.WriteLine("Entry added.");
-}
+    public List<Entry> entries = new List<Entry>();
     public void Display()
     {
         Console.WriteLine("Journal Entries:");
@@ -37,33 +17,35 @@ public class Journal {
             Console.WriteLine();
         }
     }
-public void LoadFile()
-{
-    Console.Write("Enter the filename to load: ");
-    string filename = Console.ReadLine();
-
-    if (File.Exists(filename))
+    public void LoadFile()
     {
-        entries.Clear(); // Clear existing entries before loading new ones
-        
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        Console.Write("Enter the filename to load: ");
+        string filename = Console.ReadLine();
 
-        foreach (string line in lines) {
-            string[] parts = line.Split(",");
+        if (File.Exists(filename))
+        {
+            entries.Clear(); // Clear existing entries before loading new ones
 
-            if (parts.Length == 3 &&
-                    DateTime.TryParseExact(parts[0], "yyyy-MM-dd HH:mm:ss", null, System.Globalization.DateTimeStyles.None, out DateTime entryDate))
+            string[] lines = System.IO.File.ReadAllLines(filename);
+
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split(",");
+
+                if (parts.Length == 3)
                 {
-                    string prompt = parts[1].Trim();
-                    string response = parts[2].Trim();
+                    string Date = parts[0].Trim();
+                    string Prompt = parts[1].Trim();
+                    string Response = parts[2].Trim();
 
-                    Entry entry = new Entry(prompt, response, entryDate);
+                    
+                    Entry entry = new Entry(Prompt, Response, Date);
                     entries.Add(entry);
                 }
             }
             Console.WriteLine("Entries loaded.");
         }
-            else
+        else
         {
             Console.WriteLine("File not found.");
         }
@@ -78,12 +60,22 @@ public void LoadFile()
         {
             foreach (Entry entry in entries)
             {
+                //string dateAsString = Entry.Date.ToString("yyyy-MM-dd HH:mm:ss");
                 writer.WriteLine($"{entry.Date}, {entry.Prompt}, {entry.Response}");
-                writer.WriteLine();
+                
             }
         }
 
         Console.WriteLine("Entries saved.");
     }
+    public void AddEntry(string prompt, string response)
+    {
+        DateTime date = DateTime.Now; // Get current date and time
+        string dateAsString = date.ToString("yyyy-MM-dd");
+        Entry entry = new Entry(prompt, response, dateAsString);
+        entries.Add(entry);
+        Console.WriteLine("Entry added.");
+    }
 }
+    
 
