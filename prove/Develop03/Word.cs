@@ -1,6 +1,4 @@
-
-using System.Runtime.CompilerServices;
-
+using System;
 public class Word
 {
     private string _word;
@@ -10,7 +8,7 @@ public class Word
     public Word(string word)
     {
         _word = word;
-        foreach(char letter in word)
+        foreach (char letter in word)
         {
             _hidden += "_";
         }
@@ -18,7 +16,7 @@ public class Word
 
     public string GetWord()
     {
-        if(_isHidden)
+        if (_isHidden)
             return _hidden;
         else
             return _word;
@@ -34,6 +32,6 @@ public class Word
         return _isHidden;
     }
 
-    
+
 
 }

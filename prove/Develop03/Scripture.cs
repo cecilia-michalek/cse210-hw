@@ -11,7 +11,7 @@ public class Scripture
         _reference = reference;
         _text = text;
         string[] words = text.Split();
-        foreach(string word in words)
+        foreach (string word in words)
         {
             Word wordObj = new(word);
             _words.Add(wordObj);
@@ -21,7 +21,7 @@ public class Scripture
     public void Display()
     {
         Console.Write(_reference.GetRefString() + " ");
-        foreach(Word word in _words)
+        foreach (Word word in _words)
         {
             Console.Write(word.GetWord() + " ");
         }
@@ -36,14 +36,14 @@ public class Scripture
         {
             index = random.Next(_words.Count);
 
-        } while ( _words[index].GetIsHidden() );
+        } while (_words[index].GetIsHidden());
 
         _words[index].SetIsHidden(true);
     }
 
     public bool AllWordsHidden()
     {
-        foreach(Word word in _words)
+        foreach (Word word in _words)
         {
             if (!word.GetIsHidden())
             {
