@@ -26,7 +26,7 @@ public class Journal
         {
             entries.Clear(); // Clear existing entries before loading new ones
 
-            string[] lines = System.IO.File.ReadAllLines(filename);
+            string[] lines = File.ReadAllLines(filename);
 
             foreach (string line in lines)
             {
@@ -34,11 +34,11 @@ public class Journal
 
                 if (parts.Length == 3)
                 {
-                    string Date = parts[0].Trim();
-                    string Prompt = parts[1].Trim();
-                    string Response = parts[2].Trim();
+                    string Date = parts[0];
+                    string Prompt = parts[1];
+                    string Response = parts[2];
 
-                    
+
                     Entry entry = new Entry(Prompt, Response, Date);
                     entries.Add(entry);
                 }
@@ -56,13 +56,12 @@ public class Journal
         Console.Write("Enter the filename to save: ");
         string filename = Console.ReadLine();
 
-        using (StreamWriter writer = new StreamWriter(filename))
+        using (StreamWriter writer = new StreamWriter(filename, true))
         {
             foreach (Entry entry in entries)
             {
-                //string dateAsString = Entry.Date.ToString("yyyy-MM-dd HH:mm:ss");
-                writer.WriteLine($"{entry.Date}, {entry.Prompt}, {entry.Response}");
-                
+                writer.WriteLine($"{entry.Date},{entry.Prompt},{entry.Response}");
+
             }
         }
 
@@ -77,5 +76,5 @@ public class Journal
         Console.WriteLine("Entry added.");
     }
 }
-    
+
 

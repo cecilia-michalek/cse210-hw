@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
 
 
@@ -19,6 +20,11 @@ class Fraction {
     public Fraction(int top, int bottom) {
         _top = top;
         _bottom = bottom;
+    }
+    public void SetFractionString(int top, int bottom) {
+        _top = top;
+        _bottom = bottom;
+
     }
     public string GetFractionString() {
         string fractionString = $"{_top}/{_bottom}";
