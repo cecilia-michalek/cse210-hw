@@ -24,12 +24,12 @@ class Program
         product3.SetQuantity(2);
 
         Product product4 = new Product("Chair", 1390);
-        product3.SetPrice(20.00f);
-        product3.SetQuantity(4);
+        product4.SetPrice(20.00f);
+        product4.SetQuantity(4);
 
         Product product5 = new Product("Table", 9022);
-        product3.SetPrice(200.00f);
-        product3.SetQuantity(1);
+        product5.SetPrice(200.00f);
+        product5.SetQuantity(1);
 
         List<Product> products1 = new List<Product> {product1, product2, product3};
         Order order1 = new Order(products1, customer1);

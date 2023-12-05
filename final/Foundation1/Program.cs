@@ -22,6 +22,7 @@ class Program
             _lengthSec = 500,
 
         };
+
         video2.AddComment("Melisa", "Could you explaning step 2 again?");
         video2.AddComment("Cara", "Love the fabric you used!");
 

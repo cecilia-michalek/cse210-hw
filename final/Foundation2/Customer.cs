@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 
 public class Customer
 {
@@ -11,8 +10,10 @@ public class Customer
         _address = address;
     }
 
-    public void GetCustomerName(string customerName){
-        _customerName = customerName;
+    public string CustomerName
+    {
+        get {return _customerName;}
+        set {_customerName = value;}
     }
     public bool IsInUSA(){
         return _address.IsInUSA();

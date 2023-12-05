@@ -14,14 +14,6 @@ public class Product
     }
     public string ProductName => _productName;
     public int ProductID => _productID;
-    /*public void SetProductName()
-    {
-        _productName = ProductName;
-    }
-    public void SetProductID()
-    {
-        _productID = ProductID;
-    }*/
     public void SetPrice(float price)
     {
         _price = price;

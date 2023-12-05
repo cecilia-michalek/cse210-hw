@@ -35,7 +35,7 @@ public class Order
     public string GetShippingLable()
     {
         string _shippingLable = "Shipping Label:\n";
-        _shippingLable += $" Customer Name: {_customer.GetCustomerName}\n";
+        _shippingLable += $" Customer Name: {_customer.CustomerName}\n";
         _shippingLable += $" Address: {_customer.GetAddress().GetFullAddress()}";
         return _shippingLable;
 
